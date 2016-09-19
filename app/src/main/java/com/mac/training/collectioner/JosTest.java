@@ -2,13 +2,10 @@ package com.mac.training.collectioner;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 
-import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -16,8 +13,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.mac.training.collectioner.dummy.Dummy;
-import com.mac.training.collectioner.pojo.Collection;
-import com.mac.training.collectioner.pojo.Item;
+import com.mac.training.collectioner.model.Collection;
 
 import java.util.ArrayList;
 import java.util.HashMap;

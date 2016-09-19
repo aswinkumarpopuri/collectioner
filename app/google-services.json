@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "759066364702-vrc1n8m6kfaht09sjkuupng24v3nadog.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.mac.training.collectioner",
+            "certificate_hash": "0A898A5BFBF48406052504E9930AF8EDFD789365"
+          }
+        },
+        {
           "client_id": "759066364702-q6jcj1hpr9s87a4k553b7idrftggvo2u.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
