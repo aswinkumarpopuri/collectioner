@@ -6,6 +6,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.firebase.database.ChildEventListener;
@@ -18,16 +19,13 @@ import com.mac.training.collectioner.dummy.Dummy;
 import com.mac.training.collectioner.pojo.Collection;
 import com.mac.training.collectioner.pojo.Item;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
 public class JosTest extends AppCompatActivity {
 
-    private static final String TAG = "CollectionsView";
-
-    private DatabaseReference mDatabase;
-
-
+    String TAG = "Test -- -- ";
 
 
     @Override
@@ -35,19 +33,19 @@ public class JosTest extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_jos_test);
 
-        mDatabase= FirebaseDatabase.getInstance().getReference();
-
-
-        mDatabase = FirebaseDatabase.getInstance().getReference();
-
-        getQuery(mDatabase, "Jonathan");
 
     }
 
 
     public void insertCategories(View view) {
 
-        String user = Dummy.genUser();
+        ArrayList<String> asd = FirebaseCollectionsController.getUsers();
+
+        for(String s : asd)
+            Log.d(TAG, s);
+
+
+       /* String user = Dummy.genUser();
         String collection = Dummy.genCollection();
 
         String key = mDatabase.child(user).push().getKey();
@@ -60,7 +58,7 @@ public class JosTest extends AppCompatActivity {
 
         childUpdates.put(user+"/"+key , cValues);
 
-        mDatabase.updateChildren(childUpdates);
+        mDatabase.updateChildren(childUpdates);*/
     }
 
 
@@ -70,42 +68,7 @@ public class JosTest extends AppCompatActivity {
 
 
 
-    public void getQuery(DatabaseReference databaseReference, String user) {
-        // [START recent_posts_query]
-        // Last 100 posts, these are automatically the 100 most recent
-        // due to sorting by push() keys
-        Query recentPostsQuery = databaseReference.child(user)
-                .limitToFirst(100);
 
-        recentPostsQuery.addChildEventListener(new ChildEventListener() {
-            @Override
-            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-                Collection c = dataSnapshot.getValue(Collection.class);
-                Log.d(TAG, c.collection);
-            }
-
-            @Override
-            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
-
-            }
-
-            @Override
-            public void onChildRemoved(DataSnapshot dataSnapshot) {
-
-            }
-
-            @Override
-            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
-
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
-
-    }
 
 
 
