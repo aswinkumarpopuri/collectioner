@@ -1,4 +1,4 @@
-package com.mac.training.collectioner.pojo;
+package com.mac.training.collectioner.model;
 
 import com.google.firebase.database.Exclude;
 
