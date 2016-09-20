@@ -14,16 +14,19 @@ import java.util.Map;
 public class Collection implements Parcelable {
 
     public String collection;
+    public String colId;
 
     public Collection() {
     }
 
-    public Collection(String name) {
+    public Collection(String name, String colId) {
         this.collection = name;
+        this.colId = colId;
     }
 
     protected Collection(Parcel in) {
         this.collection = in.readString();
+        this.colId = in.readString();
     }
 
     public String getCollection() {
@@ -34,10 +37,19 @@ public class Collection implements Parcelable {
         this.collection = collection;
     }
 
+    public String getColId() {
+        return colId;
+    }
+
+    public void setColId(String colId) {
+        this.colId = colId;
+    }
+
     @Exclude
     public Map<String, Object> toMap() {
         HashMap<String, Object> result = new HashMap<>();
         result.put("collection", collection);
+        result.put("colId", colId);
         return result;
     }
 
@@ -49,6 +61,7 @@ public class Collection implements Parcelable {
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(this.collection);
+        dest.writeString(this.colId);
     }
 
     public static final Creator<Collection> CREATOR = new Creator<Collection>() {

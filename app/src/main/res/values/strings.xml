@@ -7,4 +7,19 @@
     <string name="txt_validation_message">Enter %s</string>
     <string name="cupcake_ipsum">Cupcake ipsum dolor sit amet. Cheesecake sugar plum bear claw. Bonbon sesame snaps icing jelly pudding. Bonbon halvah gingerbread bonbon candy.</string>
     <string name="edit_collection">Edit Collection</string>
+
+
+    <!--Storage-->
+    <string name="camera_button_text">Upload</string>
+    <string name="sign_in_prompt">Sign In to begin</string>
+    <string name="take_photo_prompt">Upload a Photo</string>
+    <string name="download">Download</string>
+    <string name="sign_in_anonymously">Sign In</string>
+    <string name="rationale_storage">This sample reads images from your camera to demonstrate uploading.</string>
+    <string name="label_link">Link to Uploaded File</string>
+    <string name="label_download">Download File</string>
+    <string name="log_out">Log out</string>
+    <string name="success">Success</string>
+    <!--Storage-->
+
 </resources>
