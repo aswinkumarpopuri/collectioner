@@ -3,6 +3,8 @@
     package="com.mac.training.collectioner">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.USE_CREDENTIALS"></uses-permission>
+    <uses-permission android:name="android.permission.GET_ACCOUNTS"></uses-permission>
 
     <application
         android:allowBackup="true"
@@ -10,6 +12,30 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+//***
+            facebook::
+        /***********
+        <meta-data
+            android:name="com.facebook.sdk.ApplicationId"
+            android:value="@string/facebook_app_id" />
+        <activity
+            android:name="com.facebook.FacebookActivity"
+            android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
+            android:label="@string/app_name"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        //******
+
+          TWITTER
+        /************
+        <meta-data
+            android:name="com.crashlytics.ApiKey"
+            android:value="QxPmNjczBhOF4q7ujSpImwJaT" />
+        <meta-data
+            android:name="io.fabric.ApiKey"
+            android:value="c6ed5a8b0278fa2712abb5d809e905a893e2e24e"
+            />
+        /********************
+
         <activity android:name=".activity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -22,6 +48,12 @@
         <activity android:name=".activity.EditCollectionActivity" />
         <activity android:name=".activity.ViewItemActivity" />
         <activity android:name=".activity.AddItemActivity" />
+        <activity android:name=".LoginActivity"/>
+        <activity android:name=".GoogleSignInActivity" />
+        <activity android:name=".EmailPasswordActivity" />
+        <activity android:name=".BaseProgressActivity" />
+        <activity android:name=".FacebookSignInActivity" />
+        <activity android:name=".TwitterSignInActivity"/>
     </application>
 
 </manifest>
