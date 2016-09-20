@@ -34,7 +34,7 @@ public class JosTest extends AppCompatActivity {
 
     public void deleteCollection(View view) {
         String user = "Josimar";
-        String collection = "-KS4UJf1eZXxeLtqFZ19";
+        String collection = "-KS8eUq8WfAr_tnkEwkk";
         FirebaseCollectionsController.deleteUserCollection(user, collection);
     }
 
@@ -48,14 +48,14 @@ public class JosTest extends AppCompatActivity {
 
     public void queryCollection(View view) {
         String user = "Josimar";
-        String collection = "-KS4UJqUMzYpLEOByh86";
+        String collection = "-KS8eV84MtddBn9YxSUZ";
          FirebaseCollectionsController.getUserCollection(user, collection);
     }
 
 
     public void updateCollection(View view) {
         String user = "Josimar";
-        String collection = "-KS4UJqUMzYpLEOByh86";
+        String collection = "-KS8eV84MtddBn9YxSUZ";
 
         FirebaseCollectionsController.updateCollection(user,"Juanito", collection);
     }

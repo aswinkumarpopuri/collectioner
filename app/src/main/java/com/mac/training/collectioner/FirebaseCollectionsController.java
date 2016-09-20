@@ -35,13 +35,11 @@ public class FirebaseCollectionsController {
     //////////////////////////////////////////////////////////////////////
 
 
-
-
-
-
     static public void insertCollection(String user, String collectionName){
         String key = mDatabase.child(user).push().getKey();
-        Collection c = new Collection(collectionName);
+        Collection c = new Collection();
+        c.setColId(key);
+        c.setCollection(collectionName);
         Map<String, Object> cValues = c.toMap();
         Map<String, Object> childUpdates = new HashMap<>();
         childUpdates.put("users/"+user+"/"+key , cValues);
@@ -121,7 +119,9 @@ public class FirebaseCollectionsController {
     }
 
     static public void updateCollection(String user, String collectionName, String collectionKey){
-        Collection c = new Collection(collectionName);
+        Collection c = new Collection();
+        c.setCollection(collectionName);
+        c.setColId(collectionKey);
         Map<String, Object> cValues = c.toMap();
         Map<String, Object> childUpdates = new HashMap<>();
         childUpdates.put("users/"+user+"/"+collectionKey , cValues);
