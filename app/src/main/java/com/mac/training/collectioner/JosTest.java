@@ -42,7 +42,7 @@ public class JosTest extends AppCompatActivity {
     public void queryCollections(View view) {
         String user = "Josimar";
         Log.d(TAG, user+"------------------");
-         FirebaseCollectionsController.getUserCollections(user);
+        FirebaseCollectionsController.getUserCollections(user);
     }
 
 
@@ -89,8 +89,6 @@ public class JosTest extends AppCompatActivity {
         Item i = new Item("itemNfvdsfvsdame", "item desc", 12.3, 324.4, "in your mom", "new", "urlImage");
         FirebaseCollectionsController.updateItem(collection,item, i);
     }
-
-
 
 
     public void deleteItem(View view) {

@@ -14,20 +14,19 @@ import com.mac.training.collectioner.model.Item;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 
 public class FirebaseCollectionsController {
 
     static private DatabaseReference mDatabase;
-    //static ArrayList<Collection> users;
+    static ArrayList<Collection> collections = new ArrayList<>();
+    static ArrayList<Item> items = new ArrayList<>();
 
     static {
         mDatabase= FirebaseDatabase.getInstance().getReference();
     }
-
-
-
 
 
     //////////////////////////////////////////////////////////////////////
@@ -60,6 +59,7 @@ public class FirebaseCollectionsController {
 
     public static void getUserCollections(String user){
 
+        collections.clear();
 
         Query recentPostsQuery = mDatabase
                 .child("users")
@@ -70,8 +70,9 @@ public class FirebaseCollectionsController {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                 Collection c = dataSnapshot.getValue(Collection.class);
-                Log.d("wwedwhieud", c.collection);
-                Log.d("wwedwhieud", dataSnapshot.getKey());
+                collections.add(c);
+                Log.d("Collection: ", c.collection);
+                Log.d("Key: ", dataSnapshot.getKey());
             }
 
             @Override
@@ -94,8 +95,6 @@ public class FirebaseCollectionsController {
 
             }
         });
-
-
     }
 
     public static void getUserCollection(String user, String collection) {
@@ -153,6 +152,7 @@ public class FirebaseCollectionsController {
                 .child("collections")
                 .child(collection)
                 .limitToFirst(100);
+
 
         recentPostsQuery.addChildEventListener(new ChildEventListener() {
             @Override
