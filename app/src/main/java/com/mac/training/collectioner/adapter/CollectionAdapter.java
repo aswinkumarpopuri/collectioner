@@ -13,6 +13,9 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.firebase.ui.database.FirebaseRecyclerAdapter;
+import com.google.firebase.database.Query;
+import com.mac.training.collectioner.FirebaseCollectionsController;
 import com.mac.training.collectioner.R;
 import com.mac.training.collectioner.activity.EditCollectionActivity;
 import com.mac.training.collectioner.activity.ViewCollectionActivity;
@@ -26,10 +29,9 @@ import java.util.List;
 /**
  * Created by User on 9/19/2016.
  */
-public class CollectionAdapter extends RecyclerView.Adapter<CollectionAdapter.ViewHolder>
+public class CollectionAdapter extends FirebaseRecyclerAdapter<Collection, CollectionAdapter.ViewHolder>
         implements ItemTouchHelperAdapter {
 
-    private List<Collection> collectionList;
     private Activity hostActivity;
 
     // Provide a reference to the views for each data item
@@ -41,12 +43,14 @@ public class CollectionAdapter extends RecyclerView.Adapter<CollectionAdapter.Vi
         public RelativeLayout rlCollView;
         public ImageView ivCollection;
         public CardView cardViewCollection;
+        public TextView txtCollection;
 
         public ViewHolder(View v) {
             super(v);
             rlCollView = ((RelativeLayout) v.findViewById(R.id.rlCollView));
             ivCollection = ((ImageView) v.findViewById(R.id.ivCollection));
             cardViewCollection = ((CardView) v.findViewById(R.id.card_view_collection));
+            txtCollection = ((TextView) v.findViewById(R.id.txtCollection));
         }
 
         @Override
@@ -61,28 +65,18 @@ public class CollectionAdapter extends RecyclerView.Adapter<CollectionAdapter.Vi
     }
 
     // Provide a suitable constructor (depends on the kind of dataset)
-    public CollectionAdapter(List<Collection> collectionList, Activity activity) {
-        this.collectionList = collectionList;
+    public CollectionAdapter(Class<Collection> modelClass, int modelLayout,
+                             Class<ViewHolder> viewHolderClass, Query query,
+                             Activity activity) {
+        super(modelClass, modelLayout, viewHolderClass, query);
         this.hostActivity = activity;
-    }
-
-    // Create new views (invoked by the layout manager)
-    @Override
-    public ViewHolder onCreateViewHolder(ViewGroup parent,
-                                         int viewType) {
-        // create a new view
-        View v = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.collection_view, parent, false);
-        // set the view's size, margins, paddings and layout parameters
-        //...
-        return new ViewHolder(v);
     }
 
     // Replace the contents of a view (invoked by the layout manager)
     @Override
     public void onBindViewHolder(final CollectionAdapter.ViewHolder holder,
                                  final int position) {
-        final Collection collection = collectionList.get(position);
+        final Collection collection = getItem(position);
         // - get element from your dataset at this position
         // - replace the contents of the view with that element
         //holder.mTextView.setText(mDataset[position]);
@@ -103,6 +97,7 @@ public class CollectionAdapter extends RecyclerView.Adapter<CollectionAdapter.Vi
 
 
         });
+        populateViewHolder(holder, collection, position);
     }
 
     private void editCollection(int position, Collection collection) {
@@ -112,9 +107,9 @@ public class CollectionAdapter extends RecyclerView.Adapter<CollectionAdapter.Vi
     }
 
     private void removeCollection(Collection collection) {
-        int position = collectionList.indexOf(collection);
-        collectionList.remove(position);
-        notifyItemRemoved(position);
+        //int position = collectionList.indexOf(collection);
+        //collectionList.remove(position);
+        // notifyItemRemoved(position);
     }
 
     private void openItems(int position, Collection collection) {
@@ -123,25 +118,24 @@ public class CollectionAdapter extends RecyclerView.Adapter<CollectionAdapter.Vi
         this.hostActivity.startActivity(intent);
     }
 
-    // Return the size of your dataset (invoked by the layout manager)
-    @Override
-    public int getItemCount() {
-        // TODO: change for
-        //return collectionList.size();
-        return collectionList.size();
-    }
-
     // Item Touch Helper
     @Override
     public void onItemMove(int fromPosition, int toPosition) {
-        Collection prev = collectionList.remove(fromPosition);
-        collectionList.add(toPosition > fromPosition ? toPosition - 1 : toPosition, prev);
+
         notifyItemMoved(fromPosition, toPosition);
     }
 
     @Override
     public void onItemDismiss(int position) {
-        collectionList.remove(position);
+        final Collection collection = getItem(position);
+        FirebaseCollectionsController.
+                deleteUserCollection("Josimar", collection.getCollection());
         notifyItemRemoved(position);
+    }
+
+
+    @Override
+    protected void populateViewHolder(ViewHolder viewHolder, Collection model, int position) {
+        viewHolder.txtCollection.setText(model.getCollection());
     }
 }

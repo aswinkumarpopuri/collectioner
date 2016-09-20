@@ -10,7 +10,12 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.mac.training.collectioner.FirebaseCollectionsController;
 import com.mac.training.collectioner.R;
+import com.mac.training.collectioner.model.Collection;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class AddCollectionActivity extends AppCompatActivity {
 
@@ -49,7 +54,9 @@ public class AddCollectionActivity extends AppCompatActivity {
             return;
         }
 
-        Toast.makeText(getApplicationContext(), "Collection Added!", Toast.LENGTH_SHORT).show();
+        FirebaseCollectionsController.insertCollection("Josimar", collectionName.getText().toString());
+
+        Toast.makeText(getApplicationContext(), getString(R.string.collection_added, collectionName.getText().toString()), Toast.LENGTH_SHORT).show();
     }
 
     private boolean validateText(EditText editText, TextInputLayout textInputLayout, String componentName) {

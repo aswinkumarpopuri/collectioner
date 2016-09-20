@@ -7,4 +7,6 @@
     <string name="txt_validation_message">Enter %s</string>
     <string name="cupcake_ipsum">Cupcake ipsum dolor sit amet. Cheesecake sugar plum bear claw. Bonbon sesame snaps icing jelly pudding. Bonbon halvah gingerbread bonbon candy.</string>
     <string name="edit_collection">Edit Collection</string>
+    <string name="collection_added">Collection %s Added!</string>
+    <string name="collection_modified">Collection %s Modified!</string>
 </resources>
