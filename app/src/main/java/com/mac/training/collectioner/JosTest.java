@@ -21,6 +21,9 @@ public class JosTest extends AppCompatActivity {
         setContentView(R.layout.activity_jos_test);
     }
 
+    /////////////////////////////////////////////////////////////////////////////////////////////
+    //////////////////////COLLECTIONS////////////////////////////////////////////////////////////
+    /////////////////////////////////////////////////////////////////////////////////////////////
 
     public void insertCollection(View view) {
         String user = Dummy.genUser();
@@ -30,8 +33,8 @@ public class JosTest extends AppCompatActivity {
     }
 
     public void deleteCollection(View view) {
-        String user = ((EditText)findViewById(R.id.user)).getText().toString();
-        String collection = ((EditText)findViewById(R.id.colKey)).getText().toString();
+        String user = "Josimar";
+        String collection = "-KS4UJf1eZXxeLtqFZ19";
         FirebaseCollectionsController.deleteUserCollection(user, collection);
     }
 
@@ -43,6 +46,20 @@ public class JosTest extends AppCompatActivity {
     }
 
 
+    public void queryCollection(View view) {
+        String user = "Josimar";
+        String collection = "-KS4UJqUMzYpLEOByh86";
+         FirebaseCollectionsController.getUserCollection(user, collection);
+    }
+
+
+    public void updateCollection(View view) {
+        String user = "Josimar";
+        String collection = "-KS4UJqUMzYpLEOByh86";
+
+        FirebaseCollectionsController.updateCollection(user,"Juanito", collection);
+    }
+
 
 ///////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////ITEMS/////////////////////////////////////////////////////////
@@ -50,23 +67,40 @@ public class JosTest extends AppCompatActivity {
 
     public void insertItem(View view) {
         Item item = new Item("itemName", "item desc", 12.3, 324.4, "in your mom", "new", "urlImage");
-        FirebaseCollectionsController.insertItem("Josimar","-KS3gncNobhYAVfXl83Y", item );
+        FirebaseCollectionsController.insertItem("-KS4UJqUMzYpLEOByh86", item );
 
     }
+
+    public void queryItemsCollection(View view) {
+        String collection = "-KS4UJqUMzYpLEOByh86";
+        FirebaseCollectionsController.getItemsCollection(collection);
+    }
+
+    public void queryItemCollection(View view) {
+        String collection = "-KS4UJqUMzYpLEOByh86";
+        String item = "-KS4d6iQdAPCbc9FZVuB";
+        FirebaseCollectionsController.getItemCollection(collection, item);
+    }
+
+
+    public void updateItemCollection(View view) {
+        String collection = "-KS4UJqUMzYpLEOByh86";
+        String item = "-KS4d6iQdAPCbc9FZVuB";
+        Item i = new Item("itemNfvdsfvsdame", "item desc", 12.3, 324.4, "in your mom", "new", "urlImage");
+        FirebaseCollectionsController.updateItem(collection,item, i);
+    }
+
+
 
 
     public void deleteItem(View view) {
-        String user = "Josimar";
-        String collection = "-KS3gncNobhYAVfXl83Y";
-        String item = "-KS4F4Fuq6TcjMP55p2h";
-        FirebaseCollectionsController.deleteItem(user, collection, item);
+        String collection = "-KS4UJqUMzYpLEOByh86";
+        String item = "-KS4d5c8KOohzywJw8QU";
+        FirebaseCollectionsController.deleteItem(collection, item);
     }
 
 
-    public void queryItemsCollection(View view) {
-        String user = "Josimar";
-        String collection = "-KS3gncNobhYAVfXl83Y";
-        Log.d(TAG, user+"------------------");
-        FirebaseCollectionsController.getItemsCollection(user, collection);
-    }
+
+
+
 }

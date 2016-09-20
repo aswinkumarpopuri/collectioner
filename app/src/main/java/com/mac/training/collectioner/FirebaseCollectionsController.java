@@ -8,6 +8,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 import com.mac.training.collectioner.model.Collection;
 import com.mac.training.collectioner.model.Item;
 
@@ -25,17 +26,32 @@ public class FirebaseCollectionsController {
         mDatabase= FirebaseDatabase.getInstance().getReference();
     }
 
+
+
+
+
+    //////////////////////////////////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////////
+
+
+
+
+
+
     static public void insertCollection(String user, String collectionName){
         String key = mDatabase.child(user).push().getKey();
         Collection c = new Collection(collectionName);
         Map<String, Object> cValues = c.toMap();
         Map<String, Object> childUpdates = new HashMap<>();
-        childUpdates.put(user+"/"+key , cValues);
+        childUpdates.put("users/"+user+"/"+key , cValues);
         mDatabase.updateChildren(childUpdates);
     }
 
     public static void deleteUserCollection(String user, String collectionName){
         mDatabase
+                .child("users")
                 .child(user)
                 .child(collectionName)
                 .removeValue();
@@ -46,6 +62,7 @@ public class FirebaseCollectionsController {
 
 
         Query recentPostsQuery = mDatabase
+                .child("users")
                 .child(user)
                 .limitToFirst(100);
 
@@ -81,41 +98,60 @@ public class FirebaseCollectionsController {
 
     }
 
+    public static void getUserCollection(String user, String collection) {
 
-///////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////
+        Query recentPostsQuery = mDatabase
+                .child("users")
+                .child(user)
+                .child(collection);
 
 
+        recentPostsQuery.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                Collection c = dataSnapshot.getValue(Collection.class);
+                Log.d("hdwieudhaksj", c.collection);
+            }
 
-    static public void insertItem(String user, String collectionName, Item item){
-        String key = mDatabase.child(user)
-                .child(collectionName)
-                .push().getKey();
-        Map<String, Object> cValues = item.toMap();
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+    }
+
+    static public void updateCollection(String user, String collectionName, String collectionKey){
+        Collection c = new Collection(collectionName);
+        Map<String, Object> cValues = c.toMap();
         Map<String, Object> childUpdates = new HashMap<>();
-        childUpdates.put(user+"/"+collectionName+"/items/"+key , cValues);
+        childUpdates.put("users/"+user+"/"+collectionKey , cValues);
         mDatabase.updateChildren(childUpdates);
     }
 
 
-    public static void deleteItem(String user, String collection, String item){
-        mDatabase
-                .child(user)
-                .child(collection)
-                .child("items")
-                .child(item)
-                .removeValue();
+///////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////
+
+
+
+    static public void insertItem( String collectionkey, Item item){
+        String key = mDatabase.child("collections")
+                .child(collectionkey)
+                .push().getKey();
+        Map<String, Object> cValues = item.toMap();
+        Map<String, Object> childUpdates = new HashMap<>();
+        childUpdates.put("collections/"+collectionkey+"/"+key , cValues);
+        mDatabase.updateChildren(childUpdates);
     }
 
 
-    public static void getItemsCollection(String user, String collection) {
-
+    public static void getItemsCollection(String collection) {
         Query recentPostsQuery = mDatabase
-                .child(user)
+                .child("collections")
                 .child(collection)
-                .child("items")
                 .limitToFirst(100);
 
         recentPostsQuery.addChildEventListener(new ChildEventListener() {
@@ -125,20 +161,39 @@ public class FirebaseCollectionsController {
                 Log.d("wwedwhieud", i.name);
                 Log.d("wwedwhieud", dataSnapshot.getKey());
             }
-
             @Override
             public void onChildChanged(DataSnapshot dataSnapshot, String s) {
 
             }
-
             @Override
             public void onChildRemoved(DataSnapshot dataSnapshot) {
 
             }
-
             @Override
             public void onChildMoved(DataSnapshot dataSnapshot, String s) {
 
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+    }
+
+
+    public static void getItemCollection(String collection, String item) {
+
+        Query recentPostsQuery = mDatabase
+                .child("collections")
+                .child(collection)
+                .child(item);
+
+
+        recentPostsQuery.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                Item c = dataSnapshot.getValue(Item.class);
+                Log.d("hdwieudhaksj", c.name);
             }
 
             @Override
@@ -146,5 +201,25 @@ public class FirebaseCollectionsController {
 
             }
         });
+
     }
+
+
+    static public void updateItem(String collectionkey, String itemKey, Item item){
+        Map<String, Object> cValues = item.toMap();
+        Map<String, Object> childUpdates = new HashMap<>();
+        childUpdates.put("collections/"+collectionkey+"/"+itemKey , cValues);
+        mDatabase.updateChildren(childUpdates);
+    }
+
+
+    public static void deleteItem(String collection, String item){
+        mDatabase
+                .child("collections")
+                .child(collection)
+                .child(item)
+                .removeValue();
+    }
+
+
 }

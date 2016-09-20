@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -7,88 +7,80 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.mac.training.collectioner.JosTest">
-
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/user"
-        android:hint="User"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true" />
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="getUserCategories"
-        android:id="@+id/QueryCats"
-        android:onClick="queryCollections"
-        android:layout_alignTop="@+id/user"
-        android:layout_alignParentEnd="true" />
-
+    tools:context="com.mac.training.collectioner.JosTest"
+    android:orientation="vertical">
 
 
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="insert rand collections in rand users"
-        android:id="@+id/ins_cat"
+        android:text="Create collection"
         android:onClick="insertCollection"
-        android:layout_below="@+id/button"
-        android:layout_centerHorizontal="true" />
-
-    <EditText
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/colKey"
-        android:text="-KS3gsWwkm8cqzjZ_Pph"
-        android:layout_below="@+id/user"
-        android:layout_toEndOf="@+id/user"
-        android:layout_alignParentStart="true" />
+        android:layout_height="wrap_content" />
 
     <Button
+        android:text="read collections from user"
+        android:onClick="queryCollections"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Delete Collection"
-        android:id="@+id/button"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:text="read collection from user"
+        android:onClick="queryCollection"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:text="update collection from user"
+        android:onClick="updateCollection"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:text="delete collection from user"
         android:onClick="deleteCollection"
-        android:layout_below="@+id/colKey"
-        android:layout_alignStart="@+id/ins_cat"
-        android:layout_marginTop="35dp" />
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 
 
-
-
-
-
+        <!---->
+        <!---->
 
 
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="insert item"
-        android:id="@+id/button2"
+        android:text="Create Item in category"
         android:onClick="insertItem"
-        android:layout_above="@+id/button3"
-        android:layout_toEndOf="@+id/button" />
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
 
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="delete item"
-        android:id="@+id/button3"
-        android:onClick="deleteItem"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Query Items in cat"
-        android:id="@+id/button4"
+        android:text="Read Items in category"
         android:onClick="queryItemsCollection"
-        android:layout_above="@+id/button3"
-        android:layout_alignParentStart="true" />
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 
 
-</RelativeLayout>
+    <Button
+        android:text="Read Item in category"
+        android:onClick="queryItemCollection"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+
+    <Button
+        android:text="Update Item in category"
+        android:onClick="updateItemCollection"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+
+    <Button
+        android:text="Delete Item in category"
+        android:onClick="deleteItem"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+
+
+
+</LinearLayout>
