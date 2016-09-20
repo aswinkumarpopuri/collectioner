@@ -1,4 +1,8 @@
 apply plugin: 'com.android.application'
+apply plugin: 'io.fabric'
+repositories {
+    maven { url 'https://maven.fabric.io/public' }
+}
 
 android {
     compileSdkVersion 24
@@ -25,6 +29,8 @@ dependencies {
     compile 'com.android.support:appcompat-v7:24.2.1'
     compile 'com.google.firebase:firebase-core:9.4.0'
     compile 'com.google.firebase:firebase-database:9.4.0'
+    compile 'com.google.firebase:firebase-auth:9.4.0'
+    compile 'com.google.android.gms:play-services-auth:9.4.0'
     compile 'com.firebaseui:firebase-ui-database:0.4.3'
     compile 'com.android.support:design:24.2.1'
     compile 'com.android.support:support-v4:24.2.1'
@@ -35,6 +41,14 @@ dependencies {
     compile 'com.google.firebase:firebase-auth:9.4.0'
     compile 'com.google.firebase:firebase-storage:9.4.0'
 //Storage
+
+	compile 'com.facebook.android:facebook-android-sdk:4.15.0'
+    compile('com.twitter.sdk.android:twitter:2.0.0@aar') {
+        transitive = true;
+    }
+    compile('com.crashlytics.sdk.android:crashlytics:2.6.3@aar') {
+        transitive = true;
+    }
 
 }
 apply plugin: 'com.google.gms.google-services'
