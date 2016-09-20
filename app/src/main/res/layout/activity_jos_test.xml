@@ -10,24 +10,51 @@
     tools:context="com.mac.training.collectioner.JosTest">
 
 
-
-    <Spinner
+    <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/spinner_users"
+        android:id="@+id/user"
+        android:hint="User"
         android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true" />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="getUserCategories"
+        android:id="@+id/QueryCats"
+        android:onClick="queryCollections"
+        android:layout_alignTop="@+id/user"
+        android:layout_alignParentEnd="true" />
+
+
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="insert rand collections in rand users"
+        android:id="@+id/ins_cat"
+        android:onClick="insertCollection"
+        android:layout_below="@+id/button"
+        android:layout_centerHorizontal="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/colKey"
+        android:text="-KS3gsWwkm8cqzjZ_Pph"
+        android:layout_below="@+id/user"
+        android:layout_toEndOf="@+id/user"
         android:layout_alignParentStart="true" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="insert"
-        android:id="@+id/ins_cat"
-        android:onClick="insertCategories"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="48dp" />
-
+        android:text="Delete Collection"
+        android:id="@+id/button"
+        android:onClick="deleteCollection"
+        android:layout_below="@+id/colKey"
+        android:layout_alignStart="@+id/ins_cat"
+        android:layout_marginTop="35dp" />
 
 
 </RelativeLayout>
