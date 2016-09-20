@@ -5,4 +5,6 @@
     <string name="collection_description">Collection Description</string>
     <string name="add_collection">Add Collection</string>
     <string name="txt_validation_message">Enter %s</string>
+    <string name="cupcake_ipsum">Cupcake ipsum dolor sit amet. Cheesecake sugar plum bear claw. Bonbon sesame snaps icing jelly pudding. Bonbon halvah gingerbread bonbon candy.</string>
+    <string name="edit_collection">Edit Collection</string>
 </resources>

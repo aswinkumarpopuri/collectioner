@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".activity.AddCollectionActivity">
+    tools:context=".activity.EditCollectionActivity">
 
     <LinearLayout
         android:layout_width="fill_parent"
@@ -41,14 +42,15 @@
         </android.support.design.widget.TextInputLayout>
 
         <Button
-            android:id="@+id/btn_AddColl"
+            android:id="@+id/btn_EditColl"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="40dp"
             android:background="@color/primary"
-            android:text="@string/add_collection"
+            android:text="@string/edit_collection"
             android:textColor="@android:color/white" />
 
     </LinearLayout>
 
 </android.support.design.widget.CoordinatorLayout>
+
