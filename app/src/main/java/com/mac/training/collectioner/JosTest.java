@@ -66,34 +66,33 @@ public class JosTest extends AppCompatActivity {
 ///////////////////////////////////////////////////////////////////////////////////////////
 
     public void insertItem(View view) {
-        Item item = new Item("itemName", "item desc", 12.3, 324.4, "in your mom", "new", "urlImage");
-        FirebaseCollectionsController.insertItem("-KS4UJqUMzYpLEOByh86", item );
+        Item item = new Item("id" , "itemName", "urlImage", "item desc", 12.3, 324.4, "in your mom", 1.0, 1.1, "new");
+        FirebaseCollectionsController.insertItem("-KS8eV84MtddBn9YxSUZ", item );
 
     }
 
     public void queryItemsCollection(View view) {
-        String collection = "-KS4UJqUMzYpLEOByh86";
+        String collection = "-KS8eV84MtddBn9YxSUZ";
         FirebaseCollectionsController.getItemsCollection(collection);
     }
 
     public void queryItemCollection(View view) {
-        String collection = "-KS4UJqUMzYpLEOByh86";
-        String item = "-KS4d6iQdAPCbc9FZVuB";
+        String collection = "-KS8eV84MtddBn9YxSUZ";
+        String item = "-KS8rGrW8sfiJWnirodd";
         FirebaseCollectionsController.getItemCollection(collection, item);
     }
 
-
     public void updateItemCollection(View view) {
-        String collection = "-KS4UJqUMzYpLEOByh86";
-        String item = "-KS4d6iQdAPCbc9FZVuB";
-        Item i = new Item("itemNfvdsfvsdame", "item desc", 12.3, 324.4, "in your mom", "new", "urlImage");
+        String collection = "-KS8eV84MtddBn9YxSUZ";
+        String item = "-KS8rGgetj2zsPSapvw0";
+        Item i = new Item("id" , "itemName", "urlIuhiuhujiomage", "item desc", 12.3, 324.4, "in your mom", 1.0, 1.1, "new");
         FirebaseCollectionsController.updateItem(collection,item, i);
     }
 
 
     public void deleteItem(View view) {
-        String collection = "-KS4UJqUMzYpLEOByh86";
-        String item = "-KS4d5c8KOohzywJw8QU";
+        String collection = "-KS8eV84MtddBn9YxSUZ";
+        String item = "-KS8rGrW8sfiJWnirodd";
         FirebaseCollectionsController.deleteItem(collection, item);
     }
 

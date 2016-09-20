@@ -58,3 +58,5 @@ Thumbs.db
 .idea/modules.xml
 .idea/runConfigurations.xml
 
+app/src/main/res/pojos/
+projectFilesBackup/

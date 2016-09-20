@@ -29,13 +29,13 @@ public class FirebaseCollectionsController {
     }
 
 
+    //COLLECTIONS////////////////////////////////////////////////////////////////////
     //////////////////////////////////////////////////////////////////////
     //////////////////////////////////////////////////////////////////////
-    //////////////////////////////////////////////////////////////////////
-    //////////////////////////////////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////////C
 
 
-    static public void insertCollection(String user, String collectionName){
+    public static void insertCollection(String user, String collectionName){
         String key = mDatabase.child(user).push().getKey();
         Collection c = new Collection();
         c.setColId(key);
@@ -54,7 +54,6 @@ public class FirebaseCollectionsController {
                 .removeValue();
     }
 
-
     public static void getUserCollections(String user){
 
         collections.clear();
@@ -68,9 +67,11 @@ public class FirebaseCollectionsController {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                 Collection c = dataSnapshot.getValue(Collection.class);
-                collections.add(c);
-                Log.d("Collection: ", c.collection);
-                Log.d("Key: ", dataSnapshot.getKey());
+                if (c!=null){
+                    collections.add(c);
+                    Log.d("Collection: ", c.collection);
+                    Log.d("Key: ", dataSnapshot.getKey());
+                }
             }
 
             @Override
@@ -107,7 +108,8 @@ public class FirebaseCollectionsController {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 Collection c = dataSnapshot.getValue(Collection.class);
-                Log.d("hdwieudhaksj", c.collection);
+                if (c!=null)
+                    Log.d("hdwieudhaksj", c.collection);
             }
 
             @Override
@@ -118,7 +120,7 @@ public class FirebaseCollectionsController {
 
     }
 
-    static public void updateCollection(String user, String collectionName, String collectionKey){
+    public static void updateCollection(String user, String collectionName, String collectionKey){
         Collection c = new Collection();
         c.setCollection(collectionName);
         c.setColId(collectionKey);
@@ -136,7 +138,7 @@ public class FirebaseCollectionsController {
 
 
 
-    static public void insertItem( String collectionkey, Item item){
+    public static void insertItem( String collectionkey, Item item){
         String key = mDatabase.child("collections")
                 .child(collectionkey)
                 .push().getKey();
@@ -152,7 +154,6 @@ public class FirebaseCollectionsController {
                 .child("collections")
                 .child(collection)
                 .limitToFirst(100);
-
 
         recentPostsQuery.addChildEventListener(new ChildEventListener() {
             @Override
@@ -193,7 +194,9 @@ public class FirebaseCollectionsController {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 Item c = dataSnapshot.getValue(Item.class);
-                Log.d("hdwieudhaksj", c.name);
+                if (c!=null){
+                    Log.d("hdwieudhaksj", c.name);
+                }
             }
 
             @Override
@@ -205,19 +208,19 @@ public class FirebaseCollectionsController {
     }
 
 
-    static public void updateItem(String collectionkey, String itemKey, Item item){
+    static public void updateItem(String collectionKey, String itemKey, Item item){
         Map<String, Object> cValues = item.toMap();
         Map<String, Object> childUpdates = new HashMap<>();
-        childUpdates.put("collections/"+collectionkey+"/"+itemKey , cValues);
+        childUpdates.put("collections/"+collectionKey+"/"+itemKey , cValues);
         mDatabase.updateChildren(childUpdates);
     }
 
 
-    public static void deleteItem(String collection, String item){
+    public static void deleteItem(String collectionKey, String itemKey){
         mDatabase
                 .child("collections")
-                .child(collection)
-                .child(item)
+                .child(collectionKey)
+                .child(itemKey)
                 .removeValue();
     }
 
