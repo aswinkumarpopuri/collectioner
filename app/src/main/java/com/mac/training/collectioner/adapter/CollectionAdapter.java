@@ -16,6 +16,7 @@ import android.widget.Toast;
 import com.mac.training.collectioner.R;
 import com.mac.training.collectioner.activity.EditCollectionActivity;
 import com.mac.training.collectioner.activity.ViewCollectionActivity;
+import com.mac.training.collectioner.activity.ViewItemActivity;
 import com.mac.training.collectioner.adapter.helper.ItemTouchHelperAdapter;
 import com.mac.training.collectioner.adapter.helper.ItemTouchHelperViewHolder;
 import com.mac.training.collectioner.model.Collection;
@@ -88,14 +89,14 @@ public class CollectionAdapter extends RecyclerView.Adapter<CollectionAdapter.Vi
         holder.rlCollView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(holder.rlCollView.getContext(), "open Items", Toast.LENGTH_SHORT).show();
+                Toast.makeText(hostActivity, "open Items", Toast.LENGTH_SHORT).show();
                 openItems(position, collection);
             }
         });
         holder.rlCollView.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View view) {
-                Toast.makeText(holder.rlCollView.getContext(), "Edit", Toast.LENGTH_SHORT).show();
+                Toast.makeText(hostActivity, "Edit", Toast.LENGTH_SHORT).show();
                 editCollection(position, collection);
                 return true;
             }
@@ -117,7 +118,9 @@ public class CollectionAdapter extends RecyclerView.Adapter<CollectionAdapter.Vi
     }
 
     private void openItems(int position, Collection collection) {
-
+        Intent intent = new Intent(hostActivity, ViewItemActivity.class);
+        intent.putExtra(ViewItemActivity.class.getName(), collection);
+        this.hostActivity.startActivity(intent);
     }
 
     // Return the size of your dataset (invoked by the layout manager)
