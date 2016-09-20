@@ -18,7 +18,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".activity.AddCollectionActivity" />
-        <activity android:name=".activity.ViewCollectionActivity"></activity>
+        <activity android:name=".activity.ViewCollectionActivity" />
+        <activity android:name=".activity.EditCollectionActivity"></activity>
     </application>
 
 </manifest>
