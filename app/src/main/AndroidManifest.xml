@@ -20,6 +20,8 @@
         <activity android:name=".activity.AddCollectionActivity" />
         <activity android:name=".activity.ViewCollectionActivity" />
         <activity android:name=".activity.EditCollectionActivity" />
+        <activity android:name=".activity.ViewItemActivity" />
+        <activity android:name=".activity.AddItemActivity" />
     </application>
 
 </manifest>

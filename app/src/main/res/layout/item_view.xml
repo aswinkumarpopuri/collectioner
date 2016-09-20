@@ -1,7 +1,7 @@
-<?xml version="1.0" encoding="utf-8"?><!-- A CardView that contains a TextView -->
+<?xml version="1.0" encoding="utf-8"?>
 <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/card_view_collection"
+    android:id="@+id/cv_item"
     android:layout_width="match_parent"
     android:layout_height="200dp"
     android:layout_gravity="center"
@@ -10,42 +10,32 @@
     card_view:cardCornerRadius="4dp">
 
     <RelativeLayout
-        android:id="@+id/rlCollView"
+        android:id="@+id/rlItemView"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <ImageView
-            android:id="@+id/ivCollection"
+            android:id="@+id/ivItem"
             android:layout_width="match_parent"
-            android:layout_height="100dp"
+            android:layout_height="200dp"
             android:layout_alignParentStart="true"
-            android:scaleType="centerCrop"
-            android:src="@drawable/eclairs"
-            android:tint="@color/photo_tint" />
+            android:background="@color/cardview_dark_background"
+            android:scaleType="centerCrop" />
 
         <TextView
-            android:id="@+id/txtCollection"
+            android:id="@+id/txtItem"
             android:layout_width="match_parent"
-            android:layout_height="100dp"
+            android:layout_height="200dp"
             android:layout_alignParentStart="true"
             android:background="?android:selectableItemBackground"
             android:clickable="true"
             android:focusable="true"
             android:gravity="left|bottom"
             android:text="Collection"
-            android:textColor="@android:color/white"
+            android:textColor="@android:color/background_light"
             android:textSize="24sp" />
 
-        <TextView
-            android:id="@+id/txtCollectionDesc"
-            android:layout_width="wrap_content"
-            android:layout_height="100dp"
-            android:layout_alignParentStart="true"
-            android:layout_below="@+id/ivCollection"
-            android:text="@string/cupcake_ipsum"
-            android:textColor="@color/text_primary" />
 
     </RelativeLayout>
 
 </android.support.v7.widget.CardView>
-
