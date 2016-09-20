@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.mac.training.collectioner.FirebaseCollectionsController;
 import com.mac.training.collectioner.R;
 import com.mac.training.collectioner.model.Collection;
 
@@ -17,6 +18,7 @@ public class EditCollectionActivity extends AppCompatActivity {
     private EditText collectionName, descriptionName;
     private TextInputLayout inputLayoutNameCol, inputLayoutNameDesc;
     private Button btnEditCol;
+    private Collection editableCollection;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,8 +31,7 @@ public class EditCollectionActivity extends AppCompatActivity {
         descriptionName = (EditText) findViewById(R.id.txtDescColl);
         btnEditCol = (Button) findViewById(R.id.btn_EditColl);
 
-        Collection editableCollection = getIntent().getParcelableExtra(EditCollectionActivity.class.getName());
-        editableCollection.setCollection("editable");
+        editableCollection = getIntent().getParcelableExtra(EditCollectionActivity.class.getName());
 
         collectionName.setText(editableCollection.getCollection());
 
@@ -54,7 +55,10 @@ public class EditCollectionActivity extends AppCompatActivity {
             return;
         }
 
-        Toast.makeText(getApplicationContext(), "Collection Added!", Toast.LENGTH_SHORT).show();
+        FirebaseCollectionsController.updateCollection("Josimar", collectionName.getText().toString(), "-KS7M_VFtvauOeS7m2Jh");
+
+        Toast.makeText(getApplicationContext(), getString(R.string.collection_modified, collectionName.getText().toString()),
+                Toast.LENGTH_SHORT).show();
     }
 
     private boolean validateText(EditText editText, TextInputLayout textInputLayout, String componentName) {
