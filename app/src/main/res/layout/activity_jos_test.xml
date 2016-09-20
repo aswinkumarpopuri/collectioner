@@ -57,4 +57,38 @@
         android:layout_marginTop="35dp" />
 
 
+
+
+
+
+
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="insert item"
+        android:id="@+id/button2"
+        android:onClick="insertItem"
+        android:layout_above="@+id/button3"
+        android:layout_toEndOf="@+id/button" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="delete item"
+        android:id="@+id/button3"
+        android:onClick="deleteItem"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Query Items in cat"
+        android:id="@+id/button4"
+        android:onClick="queryItemsCollection"
+        android:layout_above="@+id/button3"
+        android:layout_alignParentStart="true" />
+
+
 </RelativeLayout>
