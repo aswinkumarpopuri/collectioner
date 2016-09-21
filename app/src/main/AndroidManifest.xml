@@ -33,9 +33,10 @@
             android:name="io.fabric.ApiKey"
             android:value="c6ed5a8b0278fa2712abb5d809e905a893e2e24e"/>
 
-        <activity android:name=".activity.MainActivity">
+        <!--<activity android:name=".LoginActivity">-->
+        <!--<activity android:name=".activity.MainActivity">-->
         <!--<activity android:name=".JosTest">-->
-        <!--<activity android:name=".storage.Storage">-->
+        <activity android:name=".storage.Storage">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

@@ -11,11 +11,13 @@
     android:orientation="vertical">
 
     <Button
+        android:text="upload from gallery"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/uploadImage"/>
 
     <Button
+        android:text="take a picture"
         android:id="@+id/selectImage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />

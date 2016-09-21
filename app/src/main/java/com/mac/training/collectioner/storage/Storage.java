@@ -7,13 +7,16 @@ import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
@@ -43,6 +46,19 @@ public class Storage extends AppCompatActivity {
         bSelect = (Button) findViewById(R.id.selectImage);
         bUpload = (Button) findViewById(R.id.uploadImage);
         imgV = (ImageView) findViewById(R.id.imageStore);
+
+
+        StorageReference filepath = mStorage.child("Images").child("categoryId").child("imageId");
+        filepath.getDownloadUrl().addOnCompleteListener(new OnCompleteListener<Uri>() {
+            @Override
+            public void onComplete(@NonNull Task<Uri> task) {
+                Uri downloadUri = task.getResult();
+                Picasso.with(Storage.this).load(downloadUri).into(imgV);
+
+            }
+        });
+
+
 
         bSelect.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -74,14 +90,18 @@ public class Storage extends AppCompatActivity {
                 progressDialog.show();
                 Uri uri = data.getData();
                 StorageReference filepath = mStorage.child("Images").child("categoryId").child("imageId");
+
+
                 filepath.putFile(uri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                     @Override
                     public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                         progressDialog.dismiss();
 
                         Uri downloadUri = taskSnapshot.getDownloadUrl();
+                        String url = downloadUri.getPath();
+                        Log.d("Image", downloadUri.getPath());
 
-                        Picasso.with(Storage.this).load(downloadUri).fit().centerCrop().into(imgV);
+                        Picasso.with(Storage.this).load(downloadUri).into(imgV);
 
                         Toast.makeText(Storage.this, "Liiiistoo..! (8)", Toast.LENGTH_LONG).show();
                     }
