@@ -1,4 +1,4 @@
-package com.mac.training.collectioner.activity.login;
+package com.mac.training.collectioner;
 
 import android.util.Log;
 
@@ -50,6 +50,10 @@ public class FirebaseCollectionsController {
         mDatabase
                 .child("users")
                 .child(user)
+                .child(collectionName)
+                .removeValue();
+        mDatabase
+                .child("collections")
                 .child(collectionName)
                 .removeValue();
     }

@@ -9,7 +9,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.mac.training.collectioner.activity.login.FirebaseCollectionsController;
+import com.mac.training.collectioner.FirebaseCollectionsController;
 import com.mac.training.collectioner.R;
 
 public class AddCollectionActivity extends AppCompatActivity {
