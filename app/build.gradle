@@ -24,7 +24,7 @@ android {
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile fileTree(include: ['*.jar'], dir: 'libs')
     testCompile 'junit:junit:4.12'
     compile 'com.android.support:appcompat-v7:24.2.1'
     compile 'com.google.firebase:firebase-core:9.4.0'
@@ -36,19 +36,18 @@ dependencies {
     compile 'com.android.support:support-v4:24.2.1'
     compile 'com.android.support:cardview-v7:24.2.1'
     compile 'com.android.support:recyclerview-v7:24.2.1'
-//Storage
+    //Storage
     compile 'pub.devrel:easypermissions:0.1.9'
     compile 'com.google.firebase:firebase-auth:9.4.0'
     compile 'com.google.firebase:firebase-storage:9.4.0'
-//Storage
-
-	compile 'com.facebook.android:facebook-android-sdk:4.15.0'
+    //Storage
+    compile 'com.facebook.android:facebook-android-sdk:4.15.0'
     compile('com.twitter.sdk.android:twitter:2.0.0@aar') {
         transitive = true;
     }
     compile('com.crashlytics.sdk.android:crashlytics:2.6.3@aar') {
         transitive = true;
     }
-
+    compile 'com.squareup.picasso:picasso:2.5.2'
 }
 apply plugin: 'com.google.gms.google-services'
