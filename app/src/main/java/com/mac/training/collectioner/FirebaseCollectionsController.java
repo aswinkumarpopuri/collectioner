@@ -35,11 +35,14 @@ public class FirebaseCollectionsController {
     //////////////////////////////////////////////////////////////////////C
 
 
-    public static void insertCollection(String user, String collectionName) {
+    public static void insertCollection(String user, String collectionName, String description) {
         String key = mDatabase.child(user).push().getKey();
+
         Collection c = new Collection();
         c.setColId(key);
-        c.setCollection(collectionName);
+        c.setCollectionName(collectionName);
+        c.setDescription(description);
+
         Map<String, Object> cValues = c.toMap();
         Map<String, Object> childUpdates = new HashMap<>();
         childUpdates.put("users/" + user + "/" + key, cValues);
@@ -73,7 +76,7 @@ public class FirebaseCollectionsController {
                 Collection c = dataSnapshot.getValue(Collection.class);
                 if (c != null) {
                     collections.add(c);
-                    Log.d("Collection: ", c.getCollection());
+                    Log.d("Collection: ", c.getCollectionName());
                     Log.d("Key: ", dataSnapshot.getKey());
                 }
             }
@@ -113,7 +116,7 @@ public class FirebaseCollectionsController {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 Collection c = dataSnapshot.getValue(Collection.class);
                 if (c != null)
-                    Log.d("hdwieudhaksj", c.getCollection());
+                    Log.d("hdwieudhaksj", c.getCollectionName());
             }
 
             @Override
@@ -124,13 +127,16 @@ public class FirebaseCollectionsController {
 
     }
 
-    public static void updateCollection(String user, String collectionName, String collectionKey) {
+    public static void updateCollection(String userKey, String collectionId,
+                                        String collectionName, String collectionDescription) {
         Collection c = new Collection();
-        c.setCollection(collectionName);
-        c.setColId(collectionKey);
+        c.setColId(collectionId);
+        c.setCollectionName(collectionName);
+        c.setDescription(collectionDescription);
+
         Map<String, Object> cValues = c.toMap();
         Map<String, Object> childUpdates = new HashMap<>();
-        childUpdates.put("users/" + user + "/" + collectionKey, cValues);
+        childUpdates.put("users/" + userKey + "/" + collectionId, cValues);
         mDatabase.updateChildren(childUpdates);
     }
 

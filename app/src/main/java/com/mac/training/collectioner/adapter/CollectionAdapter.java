@@ -40,14 +40,16 @@ public class CollectionAdapter extends FirebaseRecyclerAdapter<Collection, Colle
         public RelativeLayout rlCollView;
         public ImageView ivCollection;
         public CardView cardViewCollection;
-        public TextView txtCollection;
+        public TextView collectionName;
+        public TextView collectionDescription;
 
         public ViewHolder(View v) {
             super(v);
             rlCollView = ((RelativeLayout) v.findViewById(R.id.rlCollView));
             ivCollection = ((ImageView) v.findViewById(R.id.ivCollection));
             cardViewCollection = ((CardView) v.findViewById(R.id.card_view_collection));
-            txtCollection = ((TextView) v.findViewById(R.id.txtCollection));
+            collectionName = ((TextView) v.findViewById(R.id.CollectionName));
+            collectionDescription = ((TextView) v.findViewById(R.id.CollectionDesc));
         }
 
         @Override
@@ -87,7 +89,7 @@ public class CollectionAdapter extends FirebaseRecyclerAdapter<Collection, Colle
         holder.rlCollView.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View view) {
-                Toast.makeText(hostActivity, hostActivity.getString(R.string.msg_edit_collection, collection.getCollection()), Toast.LENGTH_SHORT).show();
+                Toast.makeText(hostActivity, hostActivity.getString(R.string.msg_edit_collection, collection.getCollectionName()), Toast.LENGTH_SHORT).show();
                 editCollection(collection);
                 return true;
             }
@@ -129,6 +131,7 @@ public class CollectionAdapter extends FirebaseRecyclerAdapter<Collection, Colle
 
     @Override
     protected void populateViewHolder(ViewHolder viewHolder, Collection model, int position) {
-        viewHolder.txtCollection.setText(model.getCollection());
+        viewHolder.collectionName.setText(model.getCollectionName());
+        viewHolder.collectionDescription.setText(model.getDescription());
     }
 }

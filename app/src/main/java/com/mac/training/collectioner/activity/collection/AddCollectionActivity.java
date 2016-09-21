@@ -20,6 +20,8 @@ public class AddCollectionActivity extends AppCompatActivity {
     private EditText collectionName, descriptionName;
     private TextInputLayout inputLayoutNameCol, inputLayoutNameDesc;
     private Button btnAddCol;
+//    private Button btnAddGallery;
+//    private Button btnAddCamera;
     private FirebaseUser user;
 
     @Override
@@ -32,6 +34,8 @@ public class AddCollectionActivity extends AppCompatActivity {
         collectionName = (EditText) findViewById(R.id.txtNameColl);
         descriptionName = (EditText) findViewById(R.id.txtDescColl);
         btnAddCol = (Button) findViewById(R.id.btn_AddColl);
+//        btnAddCol = (Button) findViewById(R.id.btn_AddColl);
+//        btnAddCol = (Button) findViewById(R.id.btn_AddColl);
 
         user = FirebaseAuth.getInstance().getCurrentUser();
 
@@ -56,7 +60,7 @@ public class AddCollectionActivity extends AppCompatActivity {
         }
 
         FirebaseCollectionsController.insertCollection(user.getUid(),
-                collectionName.getText().toString());
+                collectionName.getText().toString(), descriptionName.getText().toString());
 
         Toast.makeText(getApplicationContext(),
                 getString(R.string.collection_added, collectionName.getText().toString()),

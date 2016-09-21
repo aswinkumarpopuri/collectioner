@@ -27,7 +27,7 @@ public class JosTest extends AppCompatActivity {
     public void insertCollection(View view) {
         String user = Dummy.genUser();
         String collection = Dummy.genCollection();
-        FirebaseCollectionsController.insertCollection(user, collection);
+        FirebaseCollectionsController.insertCollection(user, collection, collection);
 
     }
 
@@ -56,7 +56,7 @@ public class JosTest extends AppCompatActivity {
         String user = "Josimar";
         String collection = "-KS8eV84MtddBn9YxSUZ";
 
-        FirebaseCollectionsController.updateCollection(user,"Juanito", collection);
+        FirebaseCollectionsController.updateCollection(user, collection,"Juanito", "el prietito");
     }
 
 

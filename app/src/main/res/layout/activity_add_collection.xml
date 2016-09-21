@@ -40,6 +40,34 @@
                 android:inputType="textLongMessage" />
         </android.support.design.widget.TextInputLayout>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <Button
+                android:padding="8dp"
+                android:id="@+id/btn_AddImgGallery"
+                android:layout_height="wrap_content"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_marginTop="40dp"
+                android:background="@color/accent"
+                android:text="@string/gallery"
+                android:textColor="@android:color/white" />
+
+            <Button
+                android:padding="8dp"
+                android:id="@+id/btn_AddImgCamera"
+                android:layout_height="wrap_content"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_marginTop="40dp"
+                android:background="@color/accent"
+                android:text="@string/camera"
+                android:textColor="@android:color/white" />
+
+        </LinearLayout>
+
         <Button
             android:id="@+id/btn_AddColl"
             android:layout_width="fill_parent"

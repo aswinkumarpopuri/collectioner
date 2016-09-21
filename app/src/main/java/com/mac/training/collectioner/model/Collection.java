@@ -13,28 +13,28 @@ import java.util.Map;
  */
 public class Collection implements Parcelable {
 
-    private String collection;
     private String colId;
+    private String collectionName;
+    private String description;
 
     public Collection() {
     }
 
-    public Collection(String name, String colId) {
-        this.collection = name;
+    public Collection(String name, String description) {
+        this.collectionName = name;
+        this.description = description;
+    }
+
+    public Collection(String colId, String name, String description) {
         this.colId = colId;
+        this.collectionName = name;
+        this.description = description;
     }
 
     protected Collection(Parcel in) {
-        this.collection = in.readString();
         this.colId = in.readString();
-    }
-
-    public String getCollection() {
-        return collection;
-    }
-
-    public void setCollection(String collection) {
-        this.collection = collection;
+        this.collectionName = in.readString();
+        this.description = in.readString();
     }
 
     public String getColId() {
@@ -45,11 +45,28 @@ public class Collection implements Parcelable {
         this.colId = colId;
     }
 
+    public String getCollectionName() {
+        return collectionName;
+    }
+
+    public void setCollectionName(String collection) {
+        this.collectionName = collection;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
     @Exclude
     public Map<String, Object> toMap() {
         HashMap<String, Object> result = new HashMap<>();
-        result.put("collection", collection);
         result.put("colId", colId);
+        result.put("collectionName", collectionName);
+        result.put("description", description);
         return result;
     }
 
@@ -60,8 +77,9 @@ public class Collection implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-        dest.writeString(this.collection);
         dest.writeString(this.colId);
+        dest.writeString(this.collectionName);
+        dest.writeString(this.description);
     }
 
     public static final Creator<Collection> CREATOR = new Creator<Collection>() {

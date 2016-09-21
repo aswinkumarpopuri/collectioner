@@ -37,7 +37,8 @@ public class EditCollectionActivity extends AppCompatActivity {
 
         editableCollection = getIntent().getParcelableExtra(EditCollectionActivity.class.getName());
 
-        collectionName.setText(editableCollection.getCollection());
+        collectionName.setText(editableCollection.getCollectionName());
+        descriptionName.setText(editableCollection.getDescription());
 
         user = FirebaseAuth.getInstance().getCurrentUser();
 
@@ -61,8 +62,8 @@ public class EditCollectionActivity extends AppCompatActivity {
             return;
         }
 
-        FirebaseCollectionsController.updateCollection(user.getUid(),
-                collectionName.getText().toString(), editableCollection.getColId());
+        FirebaseCollectionsController.updateCollection(user.getUid(),editableCollection.getColId(),
+                collectionName.getText().toString(), descriptionName.getText().toString());
 
         Toast.makeText(getApplicationContext(), getString(R.string.collection_modified, collectionName.getText().toString()),
                 Toast.LENGTH_SHORT).show();
