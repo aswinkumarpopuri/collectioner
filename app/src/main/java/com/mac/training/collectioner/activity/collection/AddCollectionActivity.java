@@ -11,7 +11,8 @@ import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.mac.training.collectioner.activity.login.FirebaseCollectionsController;
+
+import com.mac.training.collectioner.FirebaseCollectionsController;
 import com.mac.training.collectioner.R;
 
 public class AddCollectionActivity extends AppCompatActivity {

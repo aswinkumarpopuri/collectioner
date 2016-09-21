@@ -13,8 +13,9 @@ import android.widget.Toast;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.firebase.database.Query;
+import com.mac.training.collectioner.FirebaseCollectionsController;
 import com.mac.training.collectioner.activity.collection.ViewCollectionActivity;
-import com.mac.training.collectioner.activity.login.FirebaseCollectionsController;
+
 import com.mac.training.collectioner.R;
 import com.mac.training.collectioner.activity.collection.EditCollectionActivity;
 import com.mac.training.collectioner.activity.item.ViewItemActivity;
