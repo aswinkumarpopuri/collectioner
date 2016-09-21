@@ -25,7 +25,7 @@ public class FirebaseCollectionsController {
     static ArrayList<Item> items = new ArrayList<>();
 
     static {
-        mDatabase= FirebaseDatabase.getInstance().getReference();
+        mDatabase = FirebaseDatabase.getInstance().getReference();
     }
 
 
@@ -35,18 +35,18 @@ public class FirebaseCollectionsController {
     //////////////////////////////////////////////////////////////////////C
 
 
-    public static void insertCollection(String user, String collectionName){
+    public static void insertCollection(String user, String collectionName) {
         String key = mDatabase.child(user).push().getKey();
         Collection c = new Collection();
         c.setColId(key);
         c.setCollection(collectionName);
         Map<String, Object> cValues = c.toMap();
         Map<String, Object> childUpdates = new HashMap<>();
-        childUpdates.put("users/"+user+"/"+key , cValues);
+        childUpdates.put("users/" + user + "/" + key, cValues);
         mDatabase.updateChildren(childUpdates);
     }
 
-    public static void deleteUserCollection(String user, String collectionName){
+    public static void deleteUserCollection(String user, String collectionName) {
         mDatabase
                 .child("users")
                 .child(user)
@@ -54,7 +54,7 @@ public class FirebaseCollectionsController {
                 .removeValue();
     }
 
-    public static void getUserCollections(String user){
+    public static void getUserCollections(String user) {
 
         collections.clear();
 
@@ -67,9 +67,9 @@ public class FirebaseCollectionsController {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                 Collection c = dataSnapshot.getValue(Collection.class);
-                if (c!=null){
+                if (c != null) {
                     collections.add(c);
-                    Log.d("Collection: ", c.collection);
+                    Log.d("Collection: ", c.getCollection());
                     Log.d("Key: ", dataSnapshot.getKey());
                 }
             }
@@ -108,8 +108,8 @@ public class FirebaseCollectionsController {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 Collection c = dataSnapshot.getValue(Collection.class);
-                if (c!=null)
-                    Log.d("hdwieudhaksj", c.collection);
+                if (c != null)
+                    Log.d("hdwieudhaksj", c.getCollection());
             }
 
             @Override
@@ -120,13 +120,13 @@ public class FirebaseCollectionsController {
 
     }
 
-    public static void updateCollection(String user, String collectionName, String collectionKey){
+    public static void updateCollection(String user, String collectionName, String collectionKey) {
         Collection c = new Collection();
         c.setCollection(collectionName);
         c.setColId(collectionKey);
         Map<String, Object> cValues = c.toMap();
         Map<String, Object> childUpdates = new HashMap<>();
-        childUpdates.put("users/"+user+"/"+collectionKey , cValues);
+        childUpdates.put("users/" + user + "/" + collectionKey, cValues);
         mDatabase.updateChildren(childUpdates);
     }
 
@@ -137,14 +137,13 @@ public class FirebaseCollectionsController {
 ///////////////////////////////////////////////////////////////
 
 
-
-    public static void insertItem( String collectionkey, Item item){
+    public static void insertItem(String collectionkey, Item item) {
         String key = mDatabase.child("collections")
                 .child(collectionkey)
                 .push().getKey();
         Map<String, Object> cValues = item.toMap();
         Map<String, Object> childUpdates = new HashMap<>();
-        childUpdates.put("collections/"+collectionkey+"/"+key , cValues);
+        childUpdates.put("collections/" + collectionkey + "/" + key, cValues);
         mDatabase.updateChildren(childUpdates);
     }
 
@@ -159,21 +158,25 @@ public class FirebaseCollectionsController {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                 Item i = dataSnapshot.getValue(Item.class);
-                Log.d("wwedwhieud", i.name);
+                Log.d("wwedwhieud", i.getName());
                 Log.d("wwedwhieud", dataSnapshot.getKey());
             }
+
             @Override
             public void onChildChanged(DataSnapshot dataSnapshot, String s) {
 
             }
+
             @Override
             public void onChildRemoved(DataSnapshot dataSnapshot) {
 
             }
+
             @Override
             public void onChildMoved(DataSnapshot dataSnapshot, String s) {
 
             }
+
             @Override
             public void onCancelled(DatabaseError databaseError) {
 
@@ -194,8 +197,8 @@ public class FirebaseCollectionsController {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 Item c = dataSnapshot.getValue(Item.class);
-                if (c!=null){
-                    Log.d("hdwieudhaksj", c.name);
+                if (c != null) {
+                    Log.d("hdwieudhaksj", c.getName());
                 }
             }
 
@@ -208,15 +211,15 @@ public class FirebaseCollectionsController {
     }
 
 
-    static public void updateItem(String collectionKey, String itemKey, Item item){
+    static public void updateItem(String collectionKey, String itemKey, Item item) {
         Map<String, Object> cValues = item.toMap();
         Map<String, Object> childUpdates = new HashMap<>();
-        childUpdates.put("collections/"+collectionKey+"/"+itemKey , cValues);
+        childUpdates.put("collections/" + collectionKey + "/" + itemKey, cValues);
         mDatabase.updateChildren(childUpdates);
     }
 
 
-    public static void deleteItem(String collectionKey, String itemKey){
+    public static void deleteItem(String collectionKey, String itemKey) {
         mDatabase
                 .child("collections")
                 .child(collectionKey)

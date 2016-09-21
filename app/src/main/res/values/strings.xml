@@ -70,6 +70,11 @@
     <string name="facebook_title_text">title</string>
     <string name="facebook_status_fmt">facebook status</string>
     <string name="message_login">Please login to start you awesome collection!</string>
+    <string name="msg_open_items">Searching Items...</string>
+    <string name="msg_edit_collection">Collection: %s</string>
+    <string name="msg_edit_item">Item: %s</string>
+    <string name="msg_open_item_detail">Item %s Detail</string>
+    <string name="title_activity_edit_item">EditItemActivity</string>
     <!-- Login -->
 
 </resources>

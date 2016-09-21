@@ -13,8 +13,8 @@ import java.util.Map;
  */
 public class Collection implements Parcelable {
 
-    public String collection;
-    public String colId;
+    private String collection;
+    private String colId;
 
     public Collection() {
     }

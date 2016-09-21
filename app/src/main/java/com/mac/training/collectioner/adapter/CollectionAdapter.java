@@ -78,15 +78,15 @@ public class CollectionAdapter extends FirebaseRecyclerAdapter<Collection, Colle
         holder.rlCollView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(hostActivity, "open Items", Toast.LENGTH_SHORT).show();
-                openItems(position, collection);
+                Toast.makeText(hostActivity, hostActivity.getString(R.string.msg_open_items), Toast.LENGTH_SHORT).show();
+                openItems(collection);
             }
         });
         holder.rlCollView.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View view) {
-                Toast.makeText(hostActivity, "Edit", Toast.LENGTH_SHORT).show();
-                editCollection(position, collection);
+                Toast.makeText(hostActivity, hostActivity.getString(R.string.msg_edit_collection, collection.getCollection()), Toast.LENGTH_SHORT).show();
+                editCollection(collection);
                 return true;
             }
 
@@ -95,19 +95,13 @@ public class CollectionAdapter extends FirebaseRecyclerAdapter<Collection, Colle
         populateViewHolder(holder, collection, position);
     }
 
-    private void editCollection(int position, Collection collection) {
+    private void editCollection(Collection collection) {
         Intent intent = new Intent(hostActivity, EditCollectionActivity.class);
         intent.putExtra(EditCollectionActivity.class.getName(), collection);
         this.hostActivity.startActivity(intent);
     }
 
-    private void removeCollection(Collection collection) {
-        //int position = collectionList.indexOf(collection);
-        //collectionList.remove(position);
-        // notifyItemRemoved(position);
-    }
-
-    private void openItems(int position, Collection collection) {
+    private void openItems(Collection collection) {
         Intent intent = new Intent(hostActivity, ViewItemActivity.class);
         intent.putExtra(ViewItemActivity.class.getName(), collection);
         this.hostActivity.startActivity(intent);
@@ -116,7 +110,6 @@ public class CollectionAdapter extends FirebaseRecyclerAdapter<Collection, Colle
     // Item Touch Helper
     @Override
     public void onItemMove(int fromPosition, int toPosition) {
-
         notifyItemMoved(fromPosition, toPosition);
     }
 
