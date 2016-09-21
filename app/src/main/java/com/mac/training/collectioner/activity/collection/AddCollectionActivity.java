@@ -9,6 +9,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.mac.training.collectioner.activity.login.FirebaseCollectionsController;
 import com.mac.training.collectioner.R;
 
@@ -17,6 +19,7 @@ public class AddCollectionActivity extends AppCompatActivity {
     private EditText collectionName, descriptionName;
     private TextInputLayout inputLayoutNameCol, inputLayoutNameDesc;
     private Button btnAddCol;
+    private FirebaseUser user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +31,8 @@ public class AddCollectionActivity extends AppCompatActivity {
         collectionName = (EditText) findViewById(R.id.txtNameColl);
         descriptionName = (EditText) findViewById(R.id.txtDescColl);
         btnAddCol = (Button) findViewById(R.id.btn_AddColl);
+
+        user = FirebaseAuth.getInstance().getCurrentUser();
 
         btnAddCol.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -49,9 +54,12 @@ public class AddCollectionActivity extends AppCompatActivity {
             return;
         }
 
-        FirebaseCollectionsController.insertCollection("Josimar", collectionName.getText().toString());
+        FirebaseCollectionsController.insertCollection(user.getUid(),
+                collectionName.getText().toString());
 
-        Toast.makeText(getApplicationContext(), getString(R.string.collection_added, collectionName.getText().toString()), Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(),
+                getString(R.string.collection_added, collectionName.getText().toString()),
+                Toast.LENGTH_SHORT).show();
 
         finish();
     }

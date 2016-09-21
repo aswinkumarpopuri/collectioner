@@ -30,11 +30,14 @@ public class ViewCollectionActivity extends AppCompatActivity {
     private RecyclerView.LayoutManager mLayoutManager;
     private ItemTouchHelper mItemTouchHelper;
     private DatabaseReference mDatabase;
+    private FirebaseUser user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_collection);
+
+        user = FirebaseAuth.getInstance().getCurrentUser();
 
         mRecyclerView = (RecyclerView) findViewById(R.id.rvCollection);
 
@@ -45,10 +48,7 @@ public class ViewCollectionActivity extends AppCompatActivity {
         // specify an adapter (see also next example)
         mDatabase = FirebaseDatabase.getInstance().getReference();
 
-        Query getAllCollectionsByUser = mDatabase
-                .child("users")
-                .child("Josimar")
-                .limitToFirst(100);
+        Query getAllCollectionsByUser = mDatabase.child("users").child(user.getUid());
 
         mAdapter = new CollectionAdapter(Collection.class, R.layout.collection_view,
                 CollectionAdapter.ViewHolder.class, getAllCollectionsByUser, this);
@@ -99,5 +99,15 @@ public class ViewCollectionActivity extends AppCompatActivity {
     // Add collection
     public void addCollection(View view) {
         startActivity(new Intent(this, AddCollectionActivity.class));
+    }
+
+    // Getter & Setter
+
+    public FirebaseUser getUser() {
+        return user;
+    }
+
+    public void setUser(FirebaseUser user) {
+        this.user = user;
     }
 }

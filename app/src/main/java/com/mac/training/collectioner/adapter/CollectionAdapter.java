@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.firebase.database.Query;
+import com.mac.training.collectioner.activity.collection.ViewCollectionActivity;
 import com.mac.training.collectioner.activity.login.FirebaseCollectionsController;
 import com.mac.training.collectioner.R;
 import com.mac.training.collectioner.activity.collection.EditCollectionActivity;
@@ -116,8 +117,11 @@ public class CollectionAdapter extends FirebaseRecyclerAdapter<Collection, Colle
     @Override
     public void onItemDismiss(int position) {
         final Collection collection = getItem(position);
+
         FirebaseCollectionsController.
-                deleteUserCollection("Josimar", collection.getCollection());
+                deleteUserCollection(
+                        ((ViewCollectionActivity)hostActivity).getUser().getUid(),
+                            collection.getColId());
         notifyItemRemoved(position);
     }
 
