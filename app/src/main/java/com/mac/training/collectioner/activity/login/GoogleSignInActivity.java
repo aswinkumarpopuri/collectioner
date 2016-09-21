@@ -1,8 +1,7 @@
-package com.mac.training.collectioner;
+package com.mac.training.collectioner.activity.login;
 
 import android.content.Intent;
 import android.support.annotation.NonNull;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -25,6 +24,8 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
+import com.mac.training.collectioner.activity.BaseProgressActivity;
+import com.mac.training.collectioner.R;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -169,13 +170,17 @@ public class GoogleSignInActivity extends BaseProgressActivity implements View.O
                             Toast.makeText(GoogleSignInActivity.this, signed_in,
                                     Toast.LENGTH_SHORT).show();
                             // wait a little for the activity to be closed
-                            Timer t = new Timer();
-                            t.schedule(new TimerTask() {
-                                @Override
-                                public void run() {
-                                    finish();
-                                }
-                            }, 1500);
+                            //Timer t = new Timer();
+                            //t.schedule(new TimerTask() {
+                            //    @Override
+                            //    public void run() {
+                            //        finish();
+                            //    }
+                            //}, 1500);
+                            Intent intent = getIntent();
+                            //intent.putExtra("key", value); sign in info
+                            setResult(RESULT_OK, intent);
+                            finish();
                         }
 
                         hideProgressDialog();

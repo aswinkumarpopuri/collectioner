@@ -1,21 +1,16 @@
-package com.mac.training.collectioner.activity;
+package com.mac.training.collectioner.activity.collection;
 
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.mac.training.collectioner.FirebaseCollectionsController;
+import com.mac.training.collectioner.activity.login.FirebaseCollectionsController;
 import com.mac.training.collectioner.R;
-import com.mac.training.collectioner.model.Collection;
-
-import java.util.HashMap;
-import java.util.Map;
 
 public class AddCollectionActivity extends AppCompatActivity {
 
@@ -57,6 +52,8 @@ public class AddCollectionActivity extends AppCompatActivity {
         FirebaseCollectionsController.insertCollection("Josimar", collectionName.getText().toString());
 
         Toast.makeText(getApplicationContext(), getString(R.string.collection_added, collectionName.getText().toString()), Toast.LENGTH_SHORT).show();
+
+        finish();
     }
 
     private boolean validateText(EditText editText, TextInputLayout textInputLayout, String componentName) {

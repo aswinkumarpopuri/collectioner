@@ -1,9 +1,11 @@
-package com.mac.training.collectioner;
+package com.mac.training.collectioner.activity;
 
 import android.app.ProgressDialog;
 import android.support.annotation.VisibleForTesting;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import com.mac.training.collectioner.R;
 
 public class BaseProgressActivity extends AppCompatActivity {
     @VisibleForTesting

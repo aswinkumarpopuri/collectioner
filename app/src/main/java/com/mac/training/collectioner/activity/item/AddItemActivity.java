@@ -1,4 +1,4 @@
-package com.mac.training.collectioner.activity;
+package com.mac.training.collectioner.activity.item;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;

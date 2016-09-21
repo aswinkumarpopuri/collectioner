@@ -1,4 +1,4 @@
-package com.mac.training.collectioner;
+package com.mac.training.collectioner.activity.login;
 
 import android.content.Context;
 import android.content.Intent;
@@ -7,11 +7,12 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Adapter;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
+
+import com.mac.training.collectioner.R;
 
 public class LoginActivity extends AppCompatActivity implements AdapterView.OnItemClickListener {
 
@@ -28,6 +29,7 @@ public class LoginActivity extends AppCompatActivity implements AdapterView.OnIt
             R.string.desc_twitter_sign_in,
             R.string.desc_facebook_sign_in
     };
+    private static final int SIGN_IN_RESULT = 101;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,8 +48,19 @@ public class LoginActivity extends AppCompatActivity implements AdapterView.OnIt
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
         Class clicked = ACTIVITIES[position];
-        startActivity(new Intent(this, clicked));
+        startActivityForResult(new Intent(this, clicked), SIGN_IN_RESULT);
+    }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == SIGN_IN_RESULT) {
+            if (resultCode == RESULT_OK) {
+                Intent intent = getIntent();
+                //intent.putExtra("key", value); login info
+                setResult(RESULT_OK, intent);
+                finish();
+            }
+        }
     }
 
     // Adapter

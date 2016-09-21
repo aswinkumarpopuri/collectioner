@@ -8,13 +8,8 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.mac.training.collectioner.LoginActivity">
-
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/LOGIN"
-        android:text="Login"/>
+    tools:context="com.mac.training.collectioner.activity.login.LoginActivity"
+    android:background="@color/primary">
 
     <ListView
         android:id="@+id/list_view"

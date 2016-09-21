@@ -14,7 +14,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-            
+
         <!--Facebook-->
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
@@ -30,28 +30,29 @@
             android:value="QxPmNjczBhOF4q7ujSpImwJaT" />
         <meta-data
             android:name="io.fabric.ApiKey"
-            android:value="c6ed5a8b0278fa2712abb5d809e905a893e2e24e"/>
+            android:value="c6ed5a8b0278fa2712abb5d809e905a893e2e24e" />
 
         <activity android:name=".activity.MainActivity">
-        <!--<activity android:name=".JosTest">-->
-        <!--<activity android:name=".storage.Storage">-->
+            <!--<activity android:name=".JosTest">-->
+            <!--<activity android:name=".storage.Storage">-->
+            <!--<activity android:name=".storage.Storage">-->
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.AddCollectionActivity" />
-        <activity android:name=".activity.ViewCollectionActivity" />
-        <activity android:name=".activity.EditCollectionActivity" />
-        <activity android:name=".activity.ViewItemActivity" />
-        <activity android:name=".activity.AddItemActivity" />
-        <activity android:name=".LoginActivity"/>
-        <activity android:name=".GoogleSignInActivity" />
-        <activity android:name=".EmailPasswordActivity" />
-        <activity android:name=".BaseProgressActivity" />
-        <activity android:name=".FacebookSignInActivity" />
-        <activity android:name=".TwitterSignInActivity"/>
+        <activity android:name=".activity.collection.AddCollectionActivity" />
+        <activity android:name=".activity.collection.ViewCollectionActivity" />
+        <activity android:name=".activity.collection.EditCollectionActivity" />
+        <activity android:name=".activity.item.ViewItemActivity" />
+        <activity android:name=".activity.item.AddItemActivity" />
+        <activity android:name=".activity.login.LoginActivity" />
+        <activity android:name=".activity.login.GoogleSignInActivity" />
+        <activity android:name=".activity.login.EmailPasswordActivity" />
+        <activity android:name=".activity.BaseProgressActivity" />
+        <activity android:name=".activity.login.FacebookSignInActivity" />
+        <activity android:name=".activity.login.TwitterSignInActivity" />
     </application>
 
 </manifest>
