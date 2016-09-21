@@ -38,7 +38,6 @@ dependencies {
     compile 'com.android.support:recyclerview-v7:24.2.1'
     //Storage
     compile 'pub.devrel:easypermissions:0.1.9'
-    compile 'com.google.firebase:firebase-auth:9.4.0'
     compile 'com.google.firebase:firebase-storage:9.4.0'
     //Storage
     compile 'com.facebook.android:facebook-android-sdk:4.15.0'

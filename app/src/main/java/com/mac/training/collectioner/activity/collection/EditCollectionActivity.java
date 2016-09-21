@@ -1,4 +1,4 @@
-package com.mac.training.collectioner.activity;
+package com.mac.training.collectioner.activity.collection;
 
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -9,7 +9,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.mac.training.collectioner.FirebaseCollectionsController;
+import com.mac.training.collectioner.activity.login.FirebaseCollectionsController;
 import com.mac.training.collectioner.R;
 import com.mac.training.collectioner.model.Collection;
 
@@ -59,6 +59,8 @@ public class EditCollectionActivity extends AppCompatActivity {
 
         Toast.makeText(getApplicationContext(), getString(R.string.collection_modified, collectionName.getText().toString()),
                 Toast.LENGTH_SHORT).show();
+
+        finish();
     }
 
     private boolean validateText(EditText editText, TextInputLayout textInputLayout, String componentName) {

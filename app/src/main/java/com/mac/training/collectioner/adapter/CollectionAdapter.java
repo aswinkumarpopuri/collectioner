@@ -5,9 +5,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -15,16 +13,13 @@ import android.widget.Toast;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.firebase.database.Query;
-import com.mac.training.collectioner.FirebaseCollectionsController;
+import com.mac.training.collectioner.activity.login.FirebaseCollectionsController;
 import com.mac.training.collectioner.R;
-import com.mac.training.collectioner.activity.EditCollectionActivity;
-import com.mac.training.collectioner.activity.ViewCollectionActivity;
-import com.mac.training.collectioner.activity.ViewItemActivity;
+import com.mac.training.collectioner.activity.collection.EditCollectionActivity;
+import com.mac.training.collectioner.activity.item.ViewItemActivity;
 import com.mac.training.collectioner.adapter.helper.ItemTouchHelperAdapter;
 import com.mac.training.collectioner.adapter.helper.ItemTouchHelperViewHolder;
 import com.mac.training.collectioner.model.Collection;
-
-import java.util.List;
 
 /**
  * Created by User on 9/19/2016.

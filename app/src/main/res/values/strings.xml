@@ -22,26 +22,44 @@
     <string name="success">Success</string>
     <!--Storage-->
 
-    <string name="loading">loading</string>
-    <string name="signed_in">signed_in</string>
-    <string name="auth_failed">auth_failed</string>
-    <string name="account_not_created">account_not_created</string>
-    <string name="account_created">account_created</string>
-    <string name="signed_out">signed_out</string>
-    <string name="emailpassword_status_fmt">emailpassword_status_fmt</string>
-    <string name="firebase_status_fmt">firebase_status_fmt</string>
-    <string name="desc_firebase_lockup">desc_firebase_lockup</string>
-    <string name="emailpassword_title_text">emailpassowrd_title_text</string>
-    <string name="hint_email">hint_email</string>
-    <string name="hint_password">hint_passsowrd</string>
-    <string name="sign_in">sign_in</string>
-    <string name="create_account">create_account</string>
-    <string name="sign_out">sign_out</string>
-    <string name="desc_google_sign_in">google_sign_in</string>
-    <string name="desc_emailpassword">emailpassword</string>
-    <string name="google_status_fmt">Google User: %s</string>
+    <!-- Login -->
+    <string name="login_label">Login / Register</string>
+    <string name="logout_label">Logout</string>
+    <string name="title_emailpassword_activity">Email Login</string>
+    <string name="title_googlesignin_activity">Google SignIn</string>
+    <string name="auth_failed">Authentication failed</string>
+    <string name="desc_firebase_lockup">Firebase logo and name</string>
+    <string name="emailpassword_title_text">Email and Password</string>
+    <string name="signed_out">Signed Out</string>
+    <string name="signed_in">Signed In!</string>
+    <string name="hint_email">Email</string>
+    <string name="hint_password">Password</string>
+    <string name="create_account">Create Account</string>
+    <string name="sign_out">Sign Out</string>
+    <string name="loading">Loading…</string>
+    <string name="emailpassword_status_fmt">Email User: %s</string>
+    <string name="firebase_status_fmt">Firebase User: %s</string>
     <string name="google_title_text">Google Sign In</string>
-    <string name="disconnect">disconnect</string>
+    <string name="google_status_fmt">Google User: %s</string>
+    <string name="disconnect">Disconnect</string>
+    <string name="account_not_created">Could not create account.</string>
+    <string name="account_created">Account successfully created. Now you can login!</string>
+
+    <string name="label_google_sign_in">Google Sign In</string>
+    <string name="desc_google_sign_in">Use a Google Sign In credential to authenticate with Firebase.</string>
+    <string name="label_emailpassword">Email/Password Authentication</string>
+    <string name="desc_emailpassword">Use an email and password to authenticate with Firebase.</string>
+
+    <!-- Strings related to login -->
+    <string name="error_invalid_email">This email address is invalid</string>
+    <string name="error_invalid_password">This password is too short</string>
+    <string name="error_incorrect_password">This password is incorrect</string>
+    <string name="error_field_required">This field is required</string>
+    <string name="permission_rationale">"Contacts permissions are needed for providing email
+        completions."
+    </string>
+
+    <string name="sign_in">sign_in</string>
     <string name="desc_twitter_sign_in">twitter_sign_in</string>
     <string name="twitter_title_text">twitter_title</string>
     <string name="twitter_consumer_key">consumer key given by twitter app</string>
@@ -51,4 +69,7 @@
     <string name="facebook_app_id">appid</string>
     <string name="facebook_title_text">title</string>
     <string name="facebook_status_fmt">facebook status</string>
+    <string name="message_login">Please login to start you awesome collection!</string>
+    <!-- Login -->
+
 </resources>

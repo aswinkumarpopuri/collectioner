@@ -1,4 +1,4 @@
-package com.mac.training.collectioner;
+package com.mac.training.collectioner.activity.login;
 
 import android.util.Log;
 
