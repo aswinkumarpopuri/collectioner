@@ -1,4 +1,4 @@
-<resources>
+﻿<resources>
     <string name="app_name">Collectioner</string>
     <string name="dummyString">DummyText</string>
     <string name="collection_name">Collection Name</string>
@@ -9,6 +9,10 @@
     <string name="edit_collection">Edit Collection</string>
     <string name="collection_added">Collection %s Added!</string>
     <string name="collection_modified">Collection %s Modified!</string>
+<string name="title_activity_maps">Map</string>
+     <string name="google_maps_key" templateMergeStrategy="preserve" translatable="false">
+        AIzaSyAuSvWZYvEq5qlzBRCEOo0DPtyJLe3L2q8
+    </string>
     <!--Storage-->
     <string name="camera_button_text">Upload</string>
     <string name="sign_in_prompt">Sign In to begin</string>
